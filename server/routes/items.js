@@ -12,4 +12,14 @@ router.get('/items', async (res, req) => {
     }
 })
 
+//GET route for viewing individual items
+router.get('/items', async (res, req) => {
+    try {
+        const item = await Item.findByPk(req.params.id);
+        res.send(item);
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 module.exports = router;
